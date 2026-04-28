@@ -10,6 +10,8 @@
 
 * Lớp: K59KMT
 
+* Đề tài: Quản lý nhà hàng
+
 * Môn học: Hệ quản trị Cơ sở dữ liệu
 
 **Yêu cầu đầu bài**
@@ -71,4 +73,8 @@ Phần 5: Cursor và Duyệt dữ liệu
 * Tìm cách không sử dụng CURSOR để giải quyết bài toán mà em đã dùng CURSOR mới giải quyết được ở trên. thử so sánh tốc độ giữa có dùng cursor và không dùng cursor (nếu cùng kết quả) thì thời gian xử lý cái nào nhanh hơn, cần ảnh chụp màn hình minh chứng.
 
 * Nếu vẫn tìm được cách dùng SQL để giải quyết vấn đề mà ko cần CURSOR: thử nghĩ bài toán khác, mà chỉ CURSOR mới giải quyết được, còn SQL rất khó giải quyết đc (theo logic suy nghĩ của em)
+
+**Giới thiệu về hệ thống quản lý nhà hàng**
+
+Xây dựng một hệ thống quản lý nhà hàng (QuanLyNhaHang_K235480106047) từ nền tảng SQL Server, bao gồm các chức năng chủ yếu như: quản lý thực đơn, quản lý bàn và đặt bàn, quản lý bán hàng, quản lý nhân sự và quản lý kho và nguyên liệu.
 
