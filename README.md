@@ -189,4 +189,9 @@ Kết quả:
 Trong SQL Server có rất nhiều SP có sẵn, có thể tìm thấy chúng trong phần Object Explore -> Programmability -> Stored Procedures -> System Stored Procedures
 
 Một vài SP mà em đã tìm hiểu:
-- 
+- sp_help: Xem thông tin tổng quát về đối tượng
+- sp_rename: Đổi tên bảng hoặc cột
+- sp_who: Kiểm tra các kết nối hiện tại vào server
+- sp_databases: Liệt kê các database có trên server
+
+
