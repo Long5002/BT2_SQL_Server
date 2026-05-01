@@ -12,7 +12,7 @@
 
 * Đề tài: Quản lý nhà hàng
 
-* Môn học: Hệ quản trị Cơ sở dữ liệu
+* Tên database: QuanLyNhaHang_K235480106047
 
 **Yêu cầu đầu bài**
 
@@ -20,7 +20,7 @@ Phần 1: Thiết kế và Khởi tạo Cấu trúc Dữ liệu
 
 * Tự chọn một chủ đề quản lý
 
-* Tạo một Database mới với tên [Tên dự án]_[MaSV].
+* Tạo một Database mới với tên [Tên dự án]_[MaSV] (QuanLyNhaHang_K235480106047).
 
 * Tạo ít nhất 3 bảng có quan hệ với nhau. Yêu cầu:
 
@@ -76,5 +76,73 @@ Phần 5: Cursor và Duyệt dữ liệu
 
 **Giới thiệu về hệ thống quản lý nhà hàng**
 
-Xây dựng một hệ thống quản lý nhà hàng (QuanLyNhaHang_K235480106047) từ nền tảng SQL Server, bao gồm các chức năng chủ yếu như: quản lý thực đơn, quản lý bàn và đặt bàn, quản lý bán hàng, quản lý nhân sự và quản lý kho và nguyên liệu.
+Xây dựng một hệ thống quản lý nhà hàng (QuanLyNhaHang_K235480106047) từ nền tảng SQL Server, bao gồm các chức năng chủ yếu như: quản lý thực đơn, quản lý bàn và đặt bàn, quản lý bán hàng và quản lý nhân sự.
 
+Xây dựng hệ thống quản lý nhà hàng nhằm tối ưu hóa quy trình vận hành hệ thống, thiết lập các mối liên kết chặt chẽ thông qua khóa chính và khóa ngoại, giúp đảm bảo tính đồng bộ và chính xác trong việc quản lý doanh thu cũng như phục vụ khách hàng.
+
+## Phần 1: Khởi tạo bảng
+
+Chủ đề quản lý: Hệ thống quản lý nhà hàng
+
+Tạo mới database và đặt tên: QuanLyNhaHang_K235480106047
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/bbad981e-6e48-4e96-afc4-f543367037b2" />
+
+Tạo bảng:
+
+1. NhanVien: gồm các trường: MaNV (PK), HoTen (không để trống), ChucVu, SoDienThoai, Luong
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/d7f29de4-7566-4b99-b1df-0f3d7090456e" />
+
+2. DanhMuc: gồm các trường: MaDanhMuc (PK tự động tăng), TenDanhMuc (không để trống)
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/b47d36b7-1716-43d0-8d3d-d9e157a0fea1" />
+
+3. MonAn: gồm các trường: MaMon (PK tự động tăng), TenMon (không để trống), MaDanhMuc (FK), GiaTien, TrangThai (đang bán, ngừng bán)
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/19b024fe-555f-4f2a-89e5-f85ada638ff8" />
+
+4. BanAn: gồm các trường: MaBan (PK tự động tăng), SoBan (không để trống), SucChua, TrangThai (trống, có khách, đã đặt)
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/a4254581-cdb4-4c15-b16c-f9cfcf1d9081" />
+
+5. DatBan: gồm các trường: MaDatBan (PK tự động tăng), TenKhachHang (không để trống), SoDienThoai, ThoiGianDat, MaBan (FK)
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/0ccff755-7975-4fde-9f19-47fa3826eec1" />
+
+6. HoaDon: gồm các trường: MaHD (PK tự động tăng), NgayLap, MaBan (FK), MaNV (FK), TongTien, TrangThaiThanhToan (chưa thanh toán, đã thanh toán)
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/97665edd-0993-42f8-864a-9aa2a2e14aad" />
+
+7. ChiTietHoaDon: gồm các trường: MaCTHD (PK tự động tăng), MaHD (FK), MaMon (FK), SoLuong, DonGia
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/45e3608b-7bd2-4fa2-b10d-028635d19891" />
+
+Nhập thông tin vào các bảng:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/9caaf171-650b-4823-943d-34e5e8ec5cf2" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/60b831fd-8949-47a9-9d10-e81a7e64c158" />
+
+## Phần 2: Xây dựng Function
+
+Trong SQL Server có nhiều nhóm loại Function build_in như:
+
+- Aggregate Functions
+- Configuration Functions
+- Cursor Functions
+- Date and Time Functions
+- Hierarchy Id Functions
+- Mathematical Functions
+- Metadata Functions
+- Other Functions
+- Rowset Functions
+- Security Functions
+- String Functions
+- System Statistical Functions
+- Text and Image Functions
+- Vector Functions
+
+Một vài system function build_in mà em tìm hiểu được:
+
+- 
