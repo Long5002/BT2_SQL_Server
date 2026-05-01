@@ -166,10 +166,23 @@ Có 3 loại hàm chính:
 
  <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/60e774cf-dea0-468b-89d1-bdce7193644e" />
 
-* Viết hàm Inline table-valued function: Hàm này nhận vào @MaHD và trả về danh sách các món ăn khách đã gọi trong hóa đơn đó.
+* Viết hàm Inline table-valued function: Hàm này nhận vào @MaHD và trả về danh sách các món ăn khách đã gọi trong hóa đơn đó
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/b5397eeb-3963-4dd4-a129-37983b6f39a2" />
 
+Kết quả:
+
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/f7acae05-492b-4db5-a458-d4f327e3e724" />
 
-* Viết hàm Multi-statement Table-Valued Function: Hàm này sẽ trả về danh sách nhân viên kèm theo tổng số hóa đơn họ đã lập và tổng số tiền họ mang về cho nhà hàng.
+* Viết hàm Multi-statement Table-Valued Function: Hàm này sẽ trả về danh sách nhân viên kèm theo tổng số hóa đơn họ đã lập và tổng số tiền họ mang về cho nhà hàng
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/38757648-e946-49c9-bd58-7974cce19fe7" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/1d5115b9-f89f-444d-8c31-5cc447e6de72" />
+
+Kết quả:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/78863140-3780-4907-b591-336ff3893955" />
+
+## Phần 3: Xây dựng Store Procedure
+
