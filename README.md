@@ -186,3 +186,7 @@ Kết quả:
 
 ## Phần 3: Xây dựng Store Procedure
 
+Trong SQL Server có rất nhiều SP có sẵn, có thể tìm thấy chúng trong phần Object Explore -> Programmability -> Stored Procedures -> System Stored Procedures
+
+Một vài SP mà em đã tìm hiểu:
+- 
