@@ -90,7 +90,7 @@ Tạo mới database và đặt tên: QuanLyNhaHang_K235480106047
 
 Tạo bảng:
 
-1. NhanVien: gồm các trường: MaNV (PK), HoTen (không để trống), ChucVu, SoDienThoai, Luong
+1. NhanVien: gồm các trường: MaNV (PK), HoTen (không để trống), ChucVu (Nvarchar dùng để viết tiếng việt có dấu), SoDienThoai, Luong
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/d7f29de4-7566-4b99-b1df-0f3d7090456e" />
 
@@ -144,5 +144,32 @@ Trong SQL Server có nhiều nhóm loại Function build_in như:
 - Vector Functions
 
 Một vài system function build_in mà em tìm hiểu được:
+* Date Function (Nhóm hàm Ngày tháng)
+- GETDATE(): Tự động lấy thời gian hiện tại khi khách thanh toán hoặc đặt bàn.
+- DATEDIFF(): Tính toán khoảng thời gian.
+* Aggregate Functions (Nhóm hàm Tổng hợp)
+- SUM(): Tính tổng doanh thu.
+- COUNT(): Đếm số lượng.
+- AVG(): Tính trung bình.
+* String Functions (Nhóm hàm Xử lý Chuỗi)
+- UPPER() / LOWER(): Chuyển chữ hoa/chữ thường.
+- FORMAT(): Định dạng kiểu dữ liệu.
 
-- 
+Hàm do người dùng tự viết trong SQL thường mang mục đích để tạo ra công cụ tự giải quyết công việc, ngoài ra còn nhằm có thể tái sử dụng và có tính đóng gói. Thay vì phải viết đi viết lại một công thức phức tạp hoặc một logic định dạng khác nhau, ta chỉ cần gọi lại hàm đã viết giúp code sạch hơn và dễ dàng sửa lỗi.
+
+Có 3 loại hàm chính:
+- Scalar Function: Dùng thực hiện các tính toán logic nhỏ, định dạng dữ liệu hoặc chuyển đổi giá trị.
+- Inline table-valued function: Dùng lọc hoặc gom nhóm dữ liệu phức tạp nhưng có thể tái sử dụng nhiều nơi.
+- Multi-statement table-valued function: Dùng khi để lấy dữ liệu ra một bảng nhưng logic quá rắc rối và phức tạp
+
+* Viết hàm Scalar Function: Hiện tại trong bảng HoaDon ở cột TongTien vẫn phải tính tay để nhập vào. Em sẽ dùng hàm Function để tự động tính tổng nhờ cột SoLuong và DonGia ở bảng ChiTietHoaDon sau đó dùng lệnh UPDATE vào bảng HoaDon
+
+ <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/60e774cf-dea0-468b-89d1-bdce7193644e" />
+
+* Viết hàm Inline table-valued function: Hàm này nhận vào @MaHD và trả về danh sách các món ăn khách đã gọi trong hóa đơn đó.
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/b5397eeb-3963-4dd4-a129-37983b6f39a2" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/f7acae05-492b-4db5-a458-d4f327e3e724" />
+
+* Viết hàm Multi-statement Table-Valued Function: Hàm này sẽ trả về danh sách nhân viên kèm theo tổng số hóa đơn họ đã lập và tổng số tiền họ mang về cho nhà hàng.
