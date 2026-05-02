@@ -194,4 +194,108 @@ Một vài SP mà em đã tìm hiểu:
 - sp_who: Kiểm tra các kết nối hiện tại vào server
 - sp_databases: Liệt kê các database có trên server
 
+Viết một Store Procedure đơn giản để thực hiện lệnh Insert hoặc Update dữ liệu: Dựa vào trường GiaTien của bảng MonAn để cập nhật giá trị mới cho các món ăn trong thực đơn. Đầu tiên, thủ tục cần thực hiện kiểm tra logic để đảm bảo mã món ăn tồn tại trong hệ thống và giá tiền mới phải là một số dương hợp lệ. Sau đó, sử dụng lệnh UPDATE để thay đổi dữ liệu trực tiếp trong bảng. Cuối cùng, thực hiện truy vấn hiển thị danh sách món ăn đã cập nhật để kiểm tra tính chính xác. Sử dụng lệnh EXEC để thực thi
 
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/b6a7a36a-6055-4df9-9ec9-132bf8f50622" />
+
+Kết quả:
+
+Trước khi dùng lệnh:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/4862effe-d398-4d4d-984d-e6aef0c60b43" />
+
+Sau khi dùng lệnh:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/b67c5e71-efb4-4e2e-9c76-ac294ccf076e" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/4fbe866d-9b12-449a-9dba-1a63c0eb02ff" />
+
+Viết 01 Store Procedure có sử dụng tham số OUTPUT: Dựa vào mã nhân viên (MaNV) được truyền vào, thủ tục sẽ thực hiện đếm tổng số lượng hóa đơn mà nhân viên đó đã lập trong bảng HoaDon. Đầu tiên, thủ tục kiểm tra xem mã nhân viên có tồn tại trong hệ thống hay không. Sau đó, kết quả tính toán sẽ được gán vào tham số đầu ra (OUTPUT) để có thể tái sử dụng cho các mục đích thống kê khác. Cuối cùng, thực hiện gọi thủ tục bằng lệnh EXEC kèm theo biến nhận giá trị để kiểm tra kết quả.
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/98ac99a7-a776-492a-89a1-887f4c3073f9" />
+
+Kết quả:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/42ce25e8-26dc-4702-9144-bf2a87fc7ec6" />
+
+Viết 01 Store Procedure trả về một tập kết quả (Result set) từ lệnh SELECT sau khi đã join nhiều bảng: Thủ tục thực hiện lệnh JOIN giữa các bảng HoaDon, ChiTietHoaDon, MonAn và NhanVien để tổng hợp thông tin chi tiết của một bàn ăn cụ thể
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/6a94f41b-166c-46e3-a8b4-38f51e18420d" />
+
+Kết quả:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/0c68c5fd-4750-4bb0-8b29-c971b0a42121" />
+
+## Phần 4: Trigger và Xử lý logic nghiệp vụ
+
+Viết 1 Trigger tự động cập nhật trạng thái bàn ăn (BanAn) dựa trên sự thay đổi của hóa đơn (HoaDon)
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/62d97305-bbb8-4ddc-a629-c375af3ef5f9" />
+
+Kết quả Trigger:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/bcc89a90-a663-498f-ae5e-7c2eec0871a8" />
+
+Thử viết Trigger cho Bảng A : Khi insert thì cập nhật dữ liệu vào bảng B; sau đó viết trigger cho bảng B để khi B được cập nhật thì cập nhật sang bảng A
+
+Trigger cho bảng A:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/7cb8c368-d030-4c9d-a567-2bff5328c66d" />
+
+Trigger cho bảng B:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/1ac48caf-e058-4d3c-9c97-69f858331c54" />
+
+Insert dữ liệu vào bảng B:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/40ac9a84-3a23-49a6-a049-8a56f2e10c58" />
+
+Kết quả: 
+
+Trước:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/86498375-635b-4b71-a417-8cb4250ade71" />
+
+Sau:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/5ef56047-dea3-4ec0-9197-07c52b12b6aa" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/109cbf5c-60ff-4b6e-80e2-32fa924f7d3b" />
+
+Nhận xét: Trigger là một công cụ mạnh mẽ giúp tự động hóa việc duy trì tính toàn vẹn và đồng bộ dữ liệu giữa các bảng giúp giảm tải logic cho phần mềm ứng dụng. Tuy nhiên, qua quá trình tìm hiểu, ta thấy đây là một "con dao hai lưỡi". Nếu thiết kế không cẩn trọng sẽ dẫn đến hiện tượng đệ quy vô hạn (vòng lặp 32 cấp) gây treo hệ thống. Vì vậy, bài học quan trọng nhất là nên ưu tiên luồng cập nhật một chiều, xác định chính xác các sự kiện kích hoạt (INSERT, UPDATE, DELETE) và hạn chế tối đa các logic cập nhật chéo phức tạp để đảm bảo hiệu năng tối ưu cho cơ sở dữ liệu.
+
+## Phần 5: Cursor và Duyệt dữ liệu
+
+- Viết một đoạn script sử dụng Cursor để duyệt qua danh sách bảng MonAn và dữ liệu bán trong ChiTietHoaDon. Với mỗi món ăn, Cursor sẽ tính tổng số lượng đã bán và tổng số tiền thu về. Nếu doanh thu của món ăn đạt trên 500.000 VNĐ, hệ thống sẽ in thông báo phân loại là 'Món ăn tiềm năng', ngược lại nếu chưa có lượt bán nào sẽ cảnh báo là 'Món cần xem xét cải thiện'
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/bc5c7cba-6ce9-42d0-9768-712e9f4dcad5" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/cca41287-7726-46ef-892b-88b579c6e62c" />
+
+Kết quả:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/b70f1ea2-fa16-432d-84cb-49d43947dfa4" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/6476dada-3347-4020-995c-be31a0295d87" />
+
+- Không dùng Cursor để giải quyết bài toán Cursor đã được giải quyết ở trên, em sẽ sử dụng lệnh SELECT kết hợp biểu thức CASE WHEN
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/ac6cdef6-37d8-40be-a468-0376da5df857" />
+
+Kết quả:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/ef6270c9-9bca-41ce-8385-dea3770b6b20" />
+
+Kết luận so sánh: Không sử dụng Cursor sẽ nhanh hơn vì dùng Cursor sẽ phải duyệt chạy từng dòng, còn khi dùng CASE WHEN sẽ duyệt chạy cả bảng không những thế còn tối ưu, sử dụng ít tài nguyên hơn Cursor, bảng được tạo ra còn ngắn gọn, dễ đọc hơn.
+
+- Bài toán Cursor giải quyết tốt hơn thay vì dùng SQL: Giảm giá món ăn theo số lượng bán ra, món bán ít thì giảm nhiều, bán được nhiều thì giảm ít hoặc không giảm
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/715a3152-acd8-4247-a235-5bbe433e61d9" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/1b4c89d2-482c-4ef5-936f-af6cd14ddbf7" />
+
+Kết quả:
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/92f37070-c71c-4988-ba53-8604cf03977c" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/6f485fb1-8273-4424-9845-8072a0caf956" />
